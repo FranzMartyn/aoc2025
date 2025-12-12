@@ -13,10 +13,11 @@ def part_two(lines, dial):
     for line in lines:
         rotation = line[0]
         number = int(line[1:])
+        movement = -1 if rotation == "L"  else +1
         for i in range(number):
             # This solution is as cheap as a 5€ phone but hey it works
-            dial = dial - 1 if rotation == "L"  else dial + 1
-            if not 0 < dial < 100:
+            dial += movement
+            if dial % 100 == 0:
                 count += 1
             dial = dial % 100
     return count
